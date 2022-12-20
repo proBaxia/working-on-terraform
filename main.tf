@@ -2,41 +2,26 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_vpc" "headoffice" {
-  cidr_block       = "10.0.0.0/16"
-  instance_tenancy = "default"
+variable vpc_cidr_block {}
+variable  subnet_cidr_block {}
+variable avali_zone {}
+variable "env_prefix" {}
 
+
+resource "aws_vpc" "my-app-vpc" {
+  cidr_block = var.vpc_cidr_block
   tags = {
-    Name = "head-branch"
+      Name:"${var.env_prefix}-vpc"
   }
 }
 
 
-resource "aws_subnet" "branch-1" {
-  vpc_id     = aws_vpc.headoffice.id
-  cidr_block = "10.0.1.0/24"
-
-
-
+resource "aws_subnet" "myapp-subnet-1" {
+  vpc_id     = aws_vpc.my-app-vpc.id
+  cidr_block = var.vpc_cidr_block
+  availability_zone = var.avali_zone
   tags = {
-    Name = "public"
+     Name = "${var.env_prefix}-subnet-1"
   }
 }
-
-
-data "aws_vpc" "headoffice" {
-  id = aws_vpc.headoffice.id
-}
-
-resource "aws_subnet" "main2" {
-  vpc_id     = data.aws_vpc.headoffice.id
-  cidr_block = "10.0.2.0/24"
-
-
-  tags = {
-    Name = "private"
-  }
-
-}
-
-
+ 
