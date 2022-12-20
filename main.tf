@@ -42,3 +42,7 @@ resource "aws_internet_gateway" "myapp-igw" {
   }
   
 }
+resource "aws_route_table_association" "a-rtb-subnet-1" {
+  subnet_id      = aws_subnet.myapp-subnet-1.id
+  route_table_id = aws_route_table.my-app-route-table.id
+}
