@@ -1,0 +1,15 @@
+HOW TO INSTALL TERRAFORM ON WINDOWS OS 
+----------------------------------------
+Go to www.terraform.io and click on download button . we can see all the different operating system that terraform 
+can run on . form my project am choosing windows os click on windows 64bits. if you are using 32 bits choosing 
+32 bits .And this will download a zipped folder . once that is complete ,right click on the zipped folder you 
+download and extract all and go into the folder you just extract you will see a file that terraform need to run
+copy the executable  file and create a folder "TERRAFORM" in PC and paste it inside your executable  file
+"TERRAFORM" folder . go upto the search  where you copy your executable file and click and copy the path where 
+executable file . has for me i have it on C:\TERRAFORM . so we want to use it to set and envronment variable. go 
+to your windows search bar and type env and click on edit the system environment variables . select the down button
+that says environment variables , click on system variables click on path on click on edit and click on New and 
+paste what you copied "C:\TERRAFORM" click ok , ok, ok and we are done . now go to your cmd and check if have 
+terraform on your windows pc by typing "terraform -v" it will show you have terraform and the version 
+Terraform v1.4.6
+on windows_amd64
